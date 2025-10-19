@@ -23,7 +23,7 @@ import Shop from "./pages/Shop";
 import { useEffect } from "react";
 import { io } from "socket.io-client";
 import { setSocket } from "./redux/userSlice";
-export const serverUrl = "https://dash-dine.vercel.app/";
+export const serverUrl = "http://localhost:8000";
 
 function App() {
   const { userData } = useSelector((state) => state.user);
