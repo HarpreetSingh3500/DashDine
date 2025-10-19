@@ -2,7 +2,6 @@ import Shop from "../models/shop.model.js";
 import Order from "../models/order.model.js";
 import User from "../models/user.model.js";
 import DeliveryAssignment from "../models/deliveryAssignment.model.js";
-import { json } from "express";
 import { sendDeliveryOtpMail } from "../utils/mail.js";
 import Razorpay from "razorpay";
 import dotenv from "dotenv";
@@ -581,16 +580,8 @@ export const sendDeliveryOtp = async (req, res) => {
     shopOrder.deliveryOtp = otp;
     shopOrder.otpExpires = Date.now() + 5 * 60 * 1000;
     await order.save();
-    const emailResult = await sendDeliveryOtpMail(order.user, otp);
-
-    if (!emailResult.success) {
-      console.error("Email failed:", emailResult.error);
-      // OTP is still saved in DB, so user can retry
-      return res.status(200).json({
-        message: `OTP generated but email failed. Please try resending.`,
-        warning: true,
-      });
-    }
+    
+    await sendDeliveryOtpMail(order.user , otp)
 
     return res
       .status(200)
