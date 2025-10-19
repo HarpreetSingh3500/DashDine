@@ -1,7 +1,7 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import genToken from "../utils/token.js";
-import {sendOtpMail} from "../utils/mail.js";
+import { sendOtpMailAsync } from "../utils/mail.js";
 
 // signup control
 export const signUp = async (req, res) => {
@@ -23,9 +23,9 @@ export const signUp = async (req, res) => {
 
     // check mobile number correctness
     if (mobile.length < 10) {
-      return (
-        res.status(400).json({ message: "Mobile no. must be of 10 digits." })
-      );
+      return res
+        .status(400)
+        .json({ message: "Mobile no. must be of 10 digits." });
     }
 
     // make password more secure with hashing and salting hash( password string, salting of numbers)
@@ -72,7 +72,7 @@ export const signIn = async (req, res) => {
     // add user token to cookies
     const token = await genToken(user._id);
     res.cookie("token", token, {
-       secure: true,
+      secure: true,
       sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
       httpOnly: true,
@@ -107,7 +107,7 @@ export const sendOtp = async (req, res) => {
     user.otpExpires = Date.now() + 5 * 60 * 1000;
     user.isOtpVerified = false;
     await user.save();
-    await sendOtpMail(email, otp);
+    sendOtpMailAsync(email, otp);
     return res.status(200).json({ message: "otp sent successfully." });
   } catch (error) {
     return res.status(500).json(`send otp error: ${error}`);
@@ -156,13 +156,13 @@ export const googleAuth = async (req, res) => {
     const { fullName, email, mobile, role } = req.body;
     let user = await User.findOne({ email });
     if (!user) {
-      user = await User.create({ fullName, email, mobile,role });
+      user = await User.create({ fullName, email, mobile, role });
     }
 
     // add user token to cookies
     const token = await genToken(user._id);
     res.cookie("token", token, {
-       secure: true,
+      secure: true,
       sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
       httpOnly: true,

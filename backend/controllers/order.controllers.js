@@ -571,9 +571,9 @@ export const sendDeliveryOtp = async (req, res) => {
     const order = await Order.findById(orderId).populate("user");
     const shopOrder = order.shopOrders.id(shopOrderId);
     if (!order || !shopOrder) {
-      return (
-        res.status(400), json({ message: "Enter Valid order/shopOrder id" })
-      );
+      return res
+        .status(400)
+        .json({ message: "Enter Valid order/shopOrder id" });
     }
 
     const otp = Math.floor(1000 + Math.random() * 9000).toString();
@@ -581,7 +581,17 @@ export const sendDeliveryOtp = async (req, res) => {
     shopOrder.deliveryOtp = otp;
     shopOrder.otpExpires = Date.now() + 5 * 60 * 1000;
     await order.save();
-    sendDeliveryOtpMail(order.user, otp);
+    const emailResult = await sendDeliveryOtpMail(order.user, otp);
+
+    if (!emailResult.success) {
+      console.error("Email failed:", emailResult.error);
+      // OTP is still saved in DB, so user can retry
+      return res.status(200).json({
+        message: `OTP generated but email failed. Please try resending.`,
+        warning: true,
+      });
+    }
+
     return res
       .status(200)
       .json({ message: `OTP sent successfully to ${order.user?.fullName}` });
@@ -600,9 +610,9 @@ export const verifyDeliveryOtp = async (req, res) => {
       .populate("shopOrders.owner", "socketId");
     const shopOrder = order.shopOrders.id(shopOrderId);
     if (!order || !shopOrder) {
-      return (
-        res.status(400), json({ message: "Enter Valid order/shopOrder id" })
-      );
+      return res
+        .status(400)
+        .json({ message: "Enter Valid order/shopOrder id" });
     }
 
     if (
@@ -610,7 +620,7 @@ export const verifyDeliveryOtp = async (req, res) => {
       !shopOrder.otpExpires ||
       shopOrder.otpExpires < Date.now()
     ) {
-      res.status(400), json({ message: "Invalid/Expired OTP" });
+      res.status(400).json({ message: "Invalid/Expired OTP" });
     }
 
     shopOrder.status = "delivered";
