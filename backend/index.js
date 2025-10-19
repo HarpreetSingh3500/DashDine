@@ -17,7 +17,7 @@ import { socketHandler } from "./socket.js";
 const server = http.createServer(app);
 const io = new Server(server,{
    cors:{
-    origin: "http://localhost:5173",
+    origin: "https://dashdine-app.onrender.com",
     credentials: true,
     methods:['POST','GET']
   },
@@ -31,7 +31,7 @@ const port = process.env.PORT || 5000;
 //global middlewears
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://dashdine-app.onrender.com",
     credentials: true,
   })
 );
