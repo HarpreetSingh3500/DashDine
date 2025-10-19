@@ -322,7 +322,7 @@ function DeliveryBoy() {
             ) : (
               <div className="mt-4 p-4 border rounded-xl bg-gray-50">
                 <p className="text-sm font-semibold mb-2">
-                  Enter OTP send to{" "}
+                  Enter OTP sent to{" "}
                   <span className="text-orange-500">
                     {currentOrder.user.fullName}
                   </span>
