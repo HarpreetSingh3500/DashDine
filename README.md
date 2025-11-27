@@ -1,4 +1,3 @@
-![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white) ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=MongoDB&logoColor=white)
 # 🍔 DashDine 🍕
 
 A modern, full-stack food delivery and restaurant management platform. DashDine provides a seamless experience for customers to order food, and for restaurant owners to manage their business. This repository contains the complete source code for both the frontend and backend of the application.
