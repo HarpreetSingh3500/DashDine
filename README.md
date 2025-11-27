@@ -11,7 +11,7 @@ A modern, full-stack food delivery and restaurant management platform. DashDine 
 
 ## 🚀 Live Demo
 
-# Check out the live demo of the application here: [https://dashdine-app.onrender.com](https://dashdine-app.onrender.com)
+# Live demo of the application here: [https://dashdine-app.onrender.com](https://dashdine-app.onrender.com)
 
 ## ✨ Features
 
