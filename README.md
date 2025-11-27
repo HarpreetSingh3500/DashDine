@@ -1,8 +1,3 @@
-# DashDine – Full-Stack Food Delivery Platform  
-Live Demo → https://dashdine-app.onrender.com  
-
-A complete food ordering app with real-time tracking, Razorpay payments, restaurant dashboards, and admin panel.
-
 ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
@@ -10,20 +5,13 @@ A complete food ordering app with real-time tracking, Razorpay payments, restaur
 ![Socket.io](https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=socket.io&logoColor=white)
 ![Razorpay](https://img.shields.io/badge/Razorpay-0A254E?style=for-the-badge&logo=razorpay&logoColor=white)
 ![Render](https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)
-
-**Features**  
-- User & restaurant authentication  
-- Real-time order tracking (Socket.io)  
-- Secure payments via Razorpay  
-- Cart, menu management & reviews  
-- Fully deployed on Render + MongoDB Atlas
-# 🍔 DashDine 🍕
+# 🍔 DashDine – Full-Stack Food Delivery Platform 🍕
 
 A modern, full-stack food delivery and restaurant management platform. DashDine provides a seamless experience for customers to order food, and for restaurant owners to manage their business. This repository contains the complete source code for both the frontend and backend of the application.
 
 ## 🚀 Live Demo
 
-Check out the live demo of the application here: [https://dashdine-app.onrender.com](https://dashdine-app.onrender.com)
+#Check out the live demo of the application here: [https://dashdine-app.onrender.com](https://dashdine-app.onrender.com)
 
 ## ✨ Features
 
